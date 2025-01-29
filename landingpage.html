@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aevious</title>
+    <link rel="icon" type="image/png" href="favicon.jpeg">
+    <style>
+        /* General Reset and Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: black;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url('lp.gif') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(2px);
+            z-index: -1;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 10rem;
+            font-weight: bold;
+            margin: 0;
+            color: rgb(218, 193, 140);
+        }
+
+        /* Content Section */
+        .content {
+            background: rgba(245, 222, 179, 0.15);
+            width: 100%;
+            padding: 30px 10px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: rgb(245, 222, 179);
+        }
+
+        .content p {
+            margin: 0;
+        }
+
+        /* Button Styling */
+        .button {
+            --main-color: rgb(245, 222, 179);
+            --main-bg-color: rgba(245, 222, 179, 0.36);
+            --pattern-color: rgba(245, 222, 179, 0.073);
+
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5rem;
+            background: radial-gradient(circle, var(--main-bg-color) 0%, rgba(0, 0, 0, 0) 95%),
+                        linear-gradient(var(--pattern-color) 1px, transparent 1px),
+                        linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+            background-size: cover, 15px 15px, 15px 15px;
+            background-position: center;
+            border-image: radial-gradient(circle, var(--main-color) 0%, rgba(0, 0, 0, 0) 100%) 1;
+            border-width: 1px 0;
+            color: var(--main-color);
+            padding: 1rem 3rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: background-size 0.2s ease-in-out;
+        }
+
+        .button:hover {
+            background-size: cover, 10px 10px, 10px 10px;
+        }
+
+        .button:active {
+            filter: hue-rotate(250deg);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            color: rgb(218, 193, 140);
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Hello There!</h1>
+    </div>
+    <div class="content">
+        <p>Are you ready to enter?</p>
+    </div>
+    <button class="button" onclick="window.location.href='visitingoption.html'">ENTER</button>
+    <footer>
+        © 2025, Aevious. All rights reserved.
+    </footer>
+</body>
+</html>

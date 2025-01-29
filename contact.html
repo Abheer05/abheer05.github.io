@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dropdownstyles.css">
+  <link rel="icon" type="image/png" href="favicon.jpeg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .header {
+      position: relative;
+      color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+      padding: 20px 0;
+      border-bottom: 5px solid #f0c808;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('nyancat.gif');
+      background-size: cover;
+      background-position: center;
+      filter: blur(0px);
+      z-index: 1;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .header span {
+      z-index: 3;
+    }
+
+    .header .top-right-text {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.1em;
+      font-weight: bold;
+      background: linear-gradient(45deg, #fe77ff, #f0c808);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0);
+      z-index: 3;
+      animation: float 1s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .column {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .column > div {
+      color: #f0c808;
+      font-size: 1.3em;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .column:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .column:hover > div {
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    .column::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+      filter: blur(5px);
+      z-index: 1;
+    }
+
+    .column:nth-child(1)::before {
+      background-image: url('mailbg.jpg');
+    }
+
+    .column:nth-child(2)::before {
+      background-image: url('githubbg.jpg');
+    }
+
+    .column:nth-child(3)::before {
+      background-image: url('linkedinbg.jpg');
+    }
+
+    .column::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+
+    .column > div, .column .icon {
+      position: relative;
+      z-index: 3;
+    }
+
+    .icon {
+      width: 60px;
+      height: 60px;
+      margin-top: 20px;
+    }
+
+    .icon img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .footer {
+      background: #072647;
+      color: #ffff00;
+      padding: 5px;
+      font-size: 1em;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    CONTACT ME
+    <div class="top-right-text">CONTACT ME</div>
+  </div>
+
+  <div class="dropdown-container">
+      <button class="dropdown-button">☰</button>
+      <div class="dropdown-content">
+    <div class="radio-container">
+      <input type="radio" id="option1" name="dropdown" />
+      <label for="option1" style="text-align: left;"><a href="home.html">🏠︎ Home</a></label>
+
+      <input type="radio" id="option2" name="dropdown" />
+      <label for="option2" style="text-align: left;"><a href="about.html">✎ About</a></label>
+
+      <input type="radio" id="option3" name="dropdown" />
+      <label for="option3" style="text-align: left;"><a href="projects.html">🗒 Project</a></label>
+
+      <input type="radio" id="option4" name="dropdown" />
+      <label for="option4" style="text-align: left;"><a href="contact.html">☏ Contact</a></label>
+    </div>
+  </div>
+  </div>
+
+  <div class="container">
+      <div class="column">
+        <div>abheerlar@gmail.com</div>
+        <a href="https://mail.google.com/mail/u/0/?to=abheerlar@gmail.com&fs=1&tf=cm" target="_blank" class="icon">
+          <img src="mail.gif" alt="Mail">
+        </a>
+      </div>
+      <div class="column">
+        <div>#Abheer05</div>
+        <a href="https://github.com/Abheer05" target="_blank" class="icon">
+          <img src="github.gif" alt="Github">
+        </a>
+      </div>
+      <div class="column">
+        <div>Abheer Shambharkar</div>
+        <a href="https://www.linkedin.com/in/abheer-shambharkar-5444b9227/" target="_blank" class="icon">
+          <img src="linkedin.gif" alt="LinkedIn">
+        </a>
+      </div>
+  </div>
+
+  <footer class="footer">©2025, Aevious. All rights reserved.</footer>
+</body>
+</html>

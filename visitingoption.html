@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aevious</title>
+    <link rel="icon" type="image/png" href="favicon.jpeg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Background styling */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('opbg.png') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(2px);
+            z-index: -2;
+        }
+
+        /* Gradient overlay with horizontal gradient */
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            z-index: -1;
+        }
+
+        /* Centered content styling */
+        #content-overlay {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        /* Semi-transparent black div with gradient */
+        .black-div {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            padding: 30px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            top: -10%;
+            border-top: 2px solid #ffc506;
+            border-bottom: 2px solid #ffc506;
+        }
+
+        .black-div h1 {
+            color: white;
+            font-size: 3em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        /* Buttons styling */
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .button-container .row {
+            display: flex;
+            gap: 0;
+        }
+
+        .btn {
+            font-size: 22px;
+            font-weight: bold;
+            background: transparent;
+            border: none;
+            padding: 1em 2em;
+            color: #ffedd3;
+            text-transform: uppercase;
+            position: relative;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0;
+            background-color: #ffc506;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            color: #1e1e2b;
+            transition-delay: 0.3s;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 0;
+            width: 100%;
+            background-color: #ffc506;
+            transition: 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::after {
+            height: 100%;
+            transition-delay: 0.3s;
+        }
+
+        .button-container .personal {
+            margin-top: 25px;
+        }
+
+        /* Footer styling */
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9em;
+            border-top: 1px solid #ffc506;
+        }
+
+        /* Add animation to black-div */
+        .black-div {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Add hover effect to the black-div */
+        .black-div:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transition: background 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="gradient-overlay"></div>
+    <div id="content-overlay">
+        <div class="black-div">
+            <h1>You are here to visit my...</h1>
+        </div>
+        <div class="button-container">
+            <div class="row">
+                <button class="btn" onclick="window.location.href='home.html'">Portfolio</button>
+                <button class="btn" onclick="window.location.href='writing.html'">Writings</button>
+            </div>
+            <button class="btn personal" onclick="window.location.href='personalpage.html'">Personal Page</button>
+        </div>
+    </div>
+    <footer>
+        ©2025, Aevious. All rights reserved.
+    </footer>
+</body>
+</html>
