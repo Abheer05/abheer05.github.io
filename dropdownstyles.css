@@ -11,17 +11,21 @@
 
 /* Dropdown Button */
 .dropdown-button {
-    background-color: transparent; /* Transparent background */
-    color: gold; /* Set icon color to black or any desired color */
-    padding: 0.5rem;
-    font-size: 1.25rem;
-    border: none; /* Remove border */
+    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+    color: #ffd700; /* bright gold */
+    padding: 0.75rem;
+    font-size: 1.5rem; /* slightly smaller icon */
+    border: 2px solid gold; /* thicker gold border */
+    border-radius: 50%; /* <-- this makes it a perfect circle */
+    width: 50px; /* set width and height to same */
+    height: 50px;
+    box-shadow: 0 0 10px gold; /* glowing effect */
     cursor: pointer;
-    width: 100%;
     text-align: center;
     transition: all 0.3s ease-in-out;
-    border-radius: 5px; /* Keep rounded corners if desired */
-    box-shadow: none; /* Remove shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
