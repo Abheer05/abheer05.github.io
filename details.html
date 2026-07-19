@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details</title>
+  <link rel="stylesheet" href="dropdownstyles.css">
+  <link rel="icon" type="image/png" href="favicon.jpeg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Fixed background, stays put while content scrolls */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('projectbg.gif') no-repeat center center fixed;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .header {
+      position: relative;
+      color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+      padding: 20px 0;
+      border-bottom: 5px solid #f0c808;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('nyancat.gif');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .header span {
+      z-index: 3;
+    }
+
+    .header .top-right-text {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.1em;
+      font-weight: bold;
+      background: linear-gradient(45deg, #d84315, #f0c808);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      z-index: 3;
+      animation: float 1s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .details-container {
+      max-width: 1450px;
+      margin: 40px auto 60px;
+      background: rgba(0, 0, 0, 0.85);
+      border: 2px solid #d84315;
+      border-radius: 10px;
+      box-shadow: 0 0 12px black;
+      overflow: hidden;
+    }
+
+    /* Placeholder content styling - shown if a project isn't found */
+    .placeholder {
+      padding: 60px 30px;
+      text-align: center;
+      color: #a1a1a1;
+      font-size: 1.2em;
+    }
+
+    /* Banner */
+    .banner {
+      position: relative;
+      height: 350px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+    }
+
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .banner-title {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 10px black;
+    }
+
+    .banner-subtitle {
+      font-size: 1.2em;
+      color: #f0c808;
+      margin-top: 6px;
+      text-shadow: 0 0 6px black;
+    }
+
+    .banner-tag {
+      display: inline-block;
+      margin-top: 12px;
+      margin-right: 6px;
+      padding: 5px 14px;
+      background: #2196f3;
+      color: white;
+      font-size: 0.85em;
+      font-weight: bold;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Buttons row */
+    .details-buttons {
+      display: flex;
+      gap: 15px;
+      padding: 20px 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .details-btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      color: #fff;
+      background: #d84315;
+      border-radius: 5px;
+      font-weight: bold;
+      box-shadow: 0 0 8px #d84315;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .details-btn:hover {
+      background: #f0c808;
+      color: black;
+      box-shadow: 0 0 10px #f0c808;
+    }
+
+    /* Content sections */
+    .details-section {
+      padding: 25px 30px;
+    }
+
+    .details-section h3 {
+      color: #f0c808;
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .details-section p {
+      color: #e0e0e0;
+      line-height: 1.7;
+      font-size: 1em;
+    }
+
+    /* Contribution bullet list styling */
+    .details-section ul {
+      color: #e0e0e0;
+      line-height: 1.7;
+      font-size: 1em;
+      padding-left: 22px;
+    }
+
+    .details-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .details-section ul li::marker {
+      color: #f0c808;
+    }
+
+    .details-dates {
+      color: #a1a1a1;
+      font-size: 0.95em;
+      font-style: italic;
+    }
+
+    .footer {
+      color: white;
+      padding: 5px;
+      font-size: 1em;
+      text-align: center;
+      text-shadow: 0 0 10px black, 0 0 10px black;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+
+  <script src="nav.js"></script>
+
+  <div class="header">
+    PROJECT DETAILS
+    <div class="top-right-text">DETAILS</div>
+  </div>
+
+  <div class="details-container" id="details-container">
+    <div class="placeholder">Loading project...</div>
+  </div>
+
+  <footer class="footer">©2026, Aevious. All rights reserved.</footer>
+
+  <script>
+	  // ---- Project data ----
+	  // To add a new project: copy one block below, change the key (used in the URL)
+	  // and fill in the fields. Leave "secondLink" out entirely if there's only one link.
+	  // NOTE: "about" and "contribution" use backticks (`...`), not double quotes.
+	  // Backticks allow real line breaks and multi-line HTML, so you can paste
+	  // multi-line bullet content directly without breaking the file.
+	  // "tags" is an array now - add as many as you want: ["Game Dev", "Unity", "AI"]
+	  const projects = {
+	  yassantra: {
+	  title: "Yassantra",
+	  subtitle: "3D horror video game and Project Y in GAD series",
+	  banner: "p8.png",
+	  tags: ["Game Dev","3D","Horror","AI Agent","Solo","Unity"],
+	  githubLink: "https://github.com/Abheer05/yassantra",
+	  secondLink: { label: "Download", url: "https://aevious.itch.io/yassantra" },
+	  about: `<p>Yassantra is a third-person survival puzzle horror game built solo in Unity 6.3 URP, developed as a technical showcase for a custom-built enemy AI system, then expanded into a complete playable game. The project's foundation is an Enemy AI architecture I originally designed and implemented during my internship at Elyndor Interactive, which I later redesigned, expanded and rebuilt with new systems and behaviours specifically for Yassantra. Every system below - AI, sound propagation, traps, hazards, gates, and items - was designed and implemented independently.</p>
+	  <h4>AI Architecture - Crim</h4>
+	  <p>Crim is a single persistent enemy driven by a finite state machine running on Unity NavMesh, with six operational states: Patrol, Alert, Chase, Attack, Search and a custom-built Investigate state. Patrol handles point-to-point movement with configurable wait durations and transitions into Alert or Investigate based on sensor input. Alert introduces a deliberate detection pause before committing to a chase, giving the player a reaction window. Chase pursues the player at a distinct chase speed and hands off to Attack within range or to Search if the player breaks line of sight. Search moves to the player's last known position, holds for a configurable duration and then falls through to trap placement or back to patrol. The Investigate state, built specifically for this project, routes Crim toward a sound origin - either a placed alarm clock or the Main Gate siren - with siren response taking priority over clock response and with Crim finishing any active chase before responding to a siren.</p>
+	  <h4>Sensory Systems</h4>
+	  <p>Crim's detection is built on two independent senses. Vision uses a forward-facing sensor. Hearing is fully sphere-based with no distance cap: any sound event activates a detection sphere at its source and any entity (Crim or the player) inside that sphere at the moment of emission reacts, regardless of range. I reworked the inherited hearing sensor entirely to remove a hard detection cap and implement this sphere-based model, since the original couldn't support long-range triggers like the 100m gate siren. Crim's smell was designed narratively as a forward-facing detection cone compensating for the character's lack of vision and taste, reinforcing that proximity alone doesn't guarantee detection - the player has to be within the cone or within hearing range.</p>
+	  <h4>Sound Propagation System</h4>
+	  <p>All in-game audio is event-driven: every sound source - player footsteps, sprinting, screams, alarm clocks, the tape recorder, hazard explosions and the Main Gate siren - emits a tunable-radius sphere at the moment of the event and any sentient entity inside that sphere at that instant hears it. This single system drives both atmospheric audio and Crim's AI reactions uniformly, from a 2m player footstep to a 100m gate siren that loops continuously once triggered.</p>
+	  <h4>Trap and Hazard Systems</h4>
+	  <p>Crim can autonomously place traps at its own location during a dedicated Trap Placement state, capped at a global maximum of five active traps at any time via a counter I built specifically to enforce this limit across the whole session. Traps use dual sphere colliders - a disarm zone and a smaller trigger zone - and support a hold-to-disarm interaction as well as a hold-to-escape mechanic if triggered, with an automatic release after a timeout. Separately, static environmental hazards use a three-second fuse-and-detonate pattern with tiered damage based on player proximity at the moment of explosion and are permanently destroyed once triggered.</p>
+	  <h4>Gate and Escape Sequence Logic</h4>
+	  <p>The endgame sequence is a three-gate system - Main Gate, a concealed Shut Gate and lastly an End Gate - built around a deliberate fail-state design. Opening the Main Gate triggers a looping 100m siren that redirects Crim's AI toward the gate area, where it either chases the player through the corridor or enters a guarding behaviour with periodic screeches. The player may lure Crim away (by using alarm clock item), then use a Hanger interaction to drop their torch, which simultaneously closes the Shut Gate behind them and opens the End Gate - the only route to a win state. Failing to do this leaves the Main Gate open indefinitely with Crim free to enter the corridor, making the win condition genuinely lockable if the player doesn't manage Crim's attention correctly.</p>
+	  <h4>Item and Interaction Systems</h4>
+	  <p>Built a unified interaction system using a SphereCast from the player camera with tunable range and detection radius, driving all world interactions - item pickup, hanger use, trap disarm and beacon activation - through a single consistent input path. Implemented the full item set: a torch required to complete the game, dual-purpose alarm clocks that lure Crim and get permanently destroyed on contact, a key-gated storage box, health potions with stacking pickup logic and a lore-only tape recorder with replay-on-completion logic.</p>`,
+	  dates: "July 2026 (built in approximately 20 working days)",
+	  contribution: `<ul>
+		  <li>
+			  <strong>Full solo development</strong> across AI, gameplay systems, level design, atmosphere, lighting and UI, using Unity asset store assets only for select visual/audio elements
+		  </li>
+		  <li>
+			  <strong>AI Finite State Machine:</strong> Designed and implemented all six Crim states (Patrol, Alert, Chase, Attack, Search, Investigate), including all state transition logic and configurable timing/thresholds
+		  </li>
+		  <li>
+			  <strong>Hearing sensor rework:</strong> Rebuilt the inherited hearing system from a hard-capped model into a sphere-based, uncapped detection system supporting long-range triggers like the gate siren
+		  </li>
+		  <li>
+			  <strong>Sound propagation system:</strong> Built a unified, event-driven sound system covering every audio source in the game (player movement, screams, alarm clocks, tape recorder, hazard explosions, siren), with per-source tunable radii
+		  </li>
+		  <li>
+			  <strong>Global trap counter:</strong> Designed and implemented a session-wide cap enforcing a maximum of five active traps, including logic for freeing capacity as traps are destroyed or disarmed
+		  </li>
+		  <li>
+			  <strong>Trap and hazard systems:</strong> Built dual-zone trap interactions (disarm vs. trigger), hold-based disarm/escape mechanics, auto-release timers and a separate fuse-based hazard system with tiered proximity damage
+		  </li>
+		  <li>
+			  <strong>Gate and escape sequence:</strong> Designed and implemented the full three-gate system (Main Gate, Shut Gate, End Gate), siren-triggered AI rerouting, corridor detection logic and the fail-state path if the player mismanages the sequence
+		  </li>
+		  <li>
+			  <strong>Interaction system:</strong> Built a single SphereCast-based interaction framework from the player camera driving all world interactions across items, hangers, traps and beacons
+		  </li>
+		  <li>
+			  <strong>Item systems:</strong> Implemented the full inventory-less item framework (torch, alarm clocks, health potions, box key, tape recorder) with key-press activation and win-condition checks
+		  </li>
+		  <li>
+			  <strong>UI and game state management:</strong> Built the HUD (item toolbar, interaction prompts, blood screen health feedback), pause menu, settings, death screen and full scene reset logic on restart
+		  </li>
+		  <li>
+			  <strong>Foundation:</strong> The core AI architecture originated from an Enemy AI system I designed during my internship at Elyndor Interactive; for Yassantra, I independently redesigned the system, added new states and behaviours and integrated it into a complete game built from scratch
+		  </li>
+	  </ul>`
+	  },
+	  kaali: {
+	  title: "Kaali : A Mother's Tale",
+	  subtitle: "3D horror commercial video game",
+	  banner: "placeholder.png",
+	  tags: ["Game Dev","3D","Team","Internship","Unity"],
+	  githubLink: "https://www.linkedin.com/company/elyndor-interactive/posts/?feedView=all",
+	  secondLink: { label: "Visit Company Page", url: "https://www.linkedin.com/company/elyndor-interactive/" },
+	  about: `Kaali: A Mother's Tale is an unreleased horror video game developed by Elyndor Interactive, a startup studio, built in Unity. I joined as a programming intern and over the course of the internship, took on responsibilities well beyond the initial scope — including de facto assistant lead duties on design decisions, scope, mechanics and timeline, given the studio's early-stage structure. The role covered full responsibility of a starting game level and in the final phase, complete ownership of the enemy AI system.`,
+	  dates: "December 2025 — June 2026",
+	  contribution: `<ul>
+		  <li>Early phase: Took full responsibility of the game's starting level(scene), handling implementation end-to-end</li>
+		  <li>Mid-internship: Identified that the project's workflow was poorly structured and restructured it, improving how work was organized and tracked for the rest of the team</li>
+		  <li>Design & scope input: Assumed informal assistant-lead responsibilities, contributing to design decisions, scope definition and timeline planning as the studio lacked an established structure for this</li>
+		  <li>Final phase: Took reponibility and ownership of enemy AI as a whole, working from a rough brief on intended enemy behaviour. Designed and implemented the full detection system, including vision sensors and configurable detection range, expanding a simple brief into a properly refined AI system</li>
+		  <li>Delivered complete, working AI scripts to the team before the internship concluded</li>
+	  </ul>`
+	  },
+	  "galaxy-shooter": {
+	  title: "Galaxy Shooter",
+	  subtitle: "2D arcade shooter video game",
+	  banner: "p7.png",
+	  tags: ["Game Dev","2D","Solo","Unity"],
+	  githubLink: "https://github.com/Abheer05/Galaxy-Shooter",
+	  secondLink: { label: "Download", url: "https://aevious.itch.io/galaxy-shooter" },
+	  about: `Galaxy Shooter is a 2D arcade-style space shooter built in Unity, developed while following GameDevHQ's "The Ultimate Guide to Game Development with Unity" Udemy course. The core loop tasks players with surviving endless waves of enemy spacecraft, collecting power-ups and pushing their score as high as possible before running out of lives. After completing the tutorial framework, I extended the project with my own gameplay balancing system: rather than holding enemies at a constant speed, they accelerate continuously over the first 200 seconds of play, reaching triple their starting speed by the end of that window. This creates a deliberately steepening difficulty curve that forces players to keep adapting their strategy the longer they survive, rather than settling into a static pattern.`,
+	  dates: "January 2026",
+	  contribution: `<ul>
+		  <li>Built the core game using GameDevHQ's Unity course as the foundational framework and asset base</li>
+		  <li>Designed and implemented an original difficulty-scaling system: enemy movement speed accelerates continuously over the first 200 seconds, reaching 3x starting speed, rather than remaining constant</li>
+		  <li>Implemented three collectible power-ups (Shield, Triple Shot, Speed Boost) and a three-life system inspired by classic arcade design</li>
+		  <li>Built local high score tracking and quick-restart functionality</li>
+		  <li>Development was paused partway through to prioritize FeatherBound, a university deadline-driven group project, then resumed and completed independently afterward</li>
+	  </ul>`
+	  },
+	  featherbound: {
+	  title: "FeatherBound",
+	  subtitle: "3D open-world survival video game as university project",
+	  banner: "p6.png",
+	  tags: ["Game Dev","3D","Open World","Survival","Team","Unity"],
+	  githubLink: "https://github.com/Abheer05/FeatherBound",
+	  secondLink: { label: "Download", url: "https://aevious.itch.io/featherbound" },
+	  about: `FeatherBound is a third-person survival adventure bird simulator built in Unity as a university group project. Players control a bird exploring a world of four distinct biomes, each with its own environment, enemies and escalating survival challenges. The game combines flight-based movement (dive, pull-up, bank, flap for altitude) with resource gathering, crafting and combat, layered under health, hunger and stamina systems. Progression is gated by biome-specific boss encounters, with later regions increasing enemy durability and difficulty as players unlock new traversal and combat abilities. The project also carries a narrative thread — the world isn't as natural as it first appears and exploration gradually uncovers what happened to it.`,
+	  dates: "October 2025 — January 2026",
+	  contribution: `<ul>
+		  <li>Created lore, game direction and overall narrative framing for the project</li>
+		  <li>Designed and built all four biome environments (Skyaera, Hailcrest, Scorchvaal, Darkturnum), including terrain layout, environmental storytelling and placement of resources, enemies and points of interest</li>
+		  <li>Designed and implemented enemy behaviour and balancing values across all biomes, including difficulty scaling for later regions</li>
+		  <li>Authored the initial game concept and environment design on paper before implementation, iterating from an early prototype that was scaled back after being flagged as too complex for the milestone</li>
+		  <li>Collaborated with two team members who handled player systems, UI and core gameplay loop implementation</li>
+	  </ul>`
+      },
+      airvoid: {
+        title: "AirVOID v-1.2",
+        subtitle: "My first ever video game and Project A in GAD series",
+        banner: "p3.png",
+        tags: ["Game Dev","2D","Solo","Unity"],
+        githubLink: "https://github.com/Abheer05/AirVOID",
+        secondLink: { label: "Play", url: "https://aevious.itch.io/airvoid" },
+        about: `AirVOID is a 2D endless arcade game built in Unity 2021.3 LTS, developed as Project A of the Game Alphabet Development series. The core loop follows a Flappy Bird-style structure: the player taps to keep a bird airborne while threading gaps between procedurally spawning pipes, with score increasing for each pipe cleared. The project was built from the ground up as an introduction to Unity as an engine, covering the fundamentals of player input handling, collision detection, object spawning, scoring and complete game state management (menu, gameplay, death, restart).`,
+        dates: "September 2024",
+        contribution: `<ul>
+          <li>Followed Game Maker's Toolkit's Flappy Bird clone tutorial to build the core game loop, using the associated free asset pack</li>
+          <li>Implemented menu and in-game exit/quit functionality on top of the base tutorial</li>
+          <li>Added out-of-bounds death detection so the bird cannot exploit screen boundaries to bypass pipes</li>
+          <li>Handled full project setup and configuration in Unity 2021.3 LTS, marking first hands-on experience with the engine</li>
+        </ul>`
+	  },
+	  portfolio: {
+	  title: "Portfolio",
+	  subtitle: "Dummy version of this site",
+	  banner: "p5.gif",
+	  tags: ["Web Dev","HTML","CSS","Solo"],
+	  githubLink: "https://github.com/Abheer05/Dummy-Portfolio",
+	  about: `An earlier, dummy version of this portfolio site, built with plain HTML5 and CSS before the current content.`,
+	  dates: "November 2024 - December 2024",
+	  contribution: `<ul>
+		  <li>Designed and built the entire site solo using HTML5 and CSS</li>
+	  </ul>`
+	  },
+	  rba: {
+	  title: "Rahbar Badminton Academy",
+	  subtitle: "Web design and development internship project",
+	  banner: "p4.gif",
+	  tags: ["Web Dev","HTML","CSS","Solo","Bootstrap"],
+	  githubLink: "https://github.com/Abheer05/RBA",
+	  about: `Full website built during my web design and development internship, featuring a PHP and SQL backend for dynamic content and data handling.`,
+	  dates: "September 2024 - February 2025",
+	  contribution: `<ul>
+		  <li>Built both front end and back end using HTML5, CSS, Bootstrap, SQL, PHP, and JavaScript</li>
+	  </ul>`
+	  },
+	  ocps: {
+	  title: "Optimized College Placement System",
+	  subtitle: "College Major Project",
+	  banner: "p2.gif",
+	  tags: ["Web Dev","HTML","CSS","Team","Bootstrap"],
+	  githubLink: "https://github.com/Abheer05/OCPS",
+	  about: `A placement management system built as my major college project, using a full web stack to handle student and recruiter data, listings and placement workflows.`,
+	  dates: "September 2023 - July 2024",
+	  contribution: `<ul>
+		  <li>Built both front end and back end using HTML5, CSS, Bootstrap, SQL, PHP and JavaScript</li>
+	  </ul>`
+	  },
+	  nifse: {
+	  title: "National Institute of Fire Safety Engineering",
+	  subtitle: "First webpage as web development internship project",
+	  banner: "p1.png",
+	  tags: ["Web Dev","HTML","CSS","Solo","Bootstrap"],
+	  githubLink: "https://github.com/Abheer05/NIFSE",
+	  about: `A static landing page built during my first web development internship, using plain HTML5 and CSS with no backend framework.`,
+	  dates: "January 2024 - May 2024",
+	  contribution: `<ul>
+		  <li>Designed and built the site solo using HTML5 and CSS</li>
+	  </ul>`
+	  }
+	  };
+
+	  // ---- Render logic ----
+	  function renderProject() {
+	  const params = new URLSearchParams(window.location.search);
+	  const key = params.get("project");
+	  const container = document.getElementById("details-container");
+	  const project = projects[key];
+
+	  if (!project) {
+	  container.innerHTML = '<div class="placeholder">Project not found. Head back to the <a href="projects.html" style="color:#f0c808;">Projects page</a>.</div>';
+        return;
+      }
+
+      document.title = project.title + " — Project Details";
+
+      let buttonsHTML = `<a href="${project.githubLink}" target="_blank" class="details-btn">View Project</a>`;
+      if (project.secondLink) {
+        buttonsHTML += `<a href="${project.secondLink.url}" target="_blank" class="details-btn">${project.secondLink.label}</a>`;
+      }
+
+      const tagsHTML = project.tags.map(t => `<div class="banner-tag">${t}</div>`).join('');
+
+      container.innerHTML = `
+        <div class="banner" style="background-image: url('${project.banner}');">
+          <div class="banner-content">
+            <div class="banner-title">${project.title}</div>
+            <div class="banner-subtitle">${project.subtitle}</div>
+            ${tagsHTML}
+          </div>
+        </div>
+        <div class="details-buttons">${buttonsHTML}</div>
+        <div class="details-section">
+          <h3>About</h3>
+          <p>${project.about}</p>
+        </div>
+        <div class="details-section">
+          <h3>Timeline</h3>
+          <p class="details-dates">${project.dates}</p>
+        </div>
+        <div class="details-section">
+          <h3>My Contribution</h3>
+          ${project.contribution}
+        </div>
+      `;
+    }
+
+    renderProject();
+  </script>
+</body>
+</html>

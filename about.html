@@ -92,7 +92,7 @@
       width: 100%;
       margin: 35px auto;
       padding: 30px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.9);
       border: 2px solid #ff6f00;
       border-radius: 10px;
       box-shadow: 0 0 10px 5px #ff4500;
@@ -158,6 +158,10 @@
       background: transparent;
     }
 
+    .skills {
+      padding: 30px 70px;
+    }
+
     .bio:hover, .skills:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
@@ -196,17 +200,18 @@
       color: #d84315;
     }
 
+    .skills h4 {
+      font-size: 1.2em;
+      color: #f0c808;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      font-family: 'Roboto', sans-serif;
+    }
+
     .bio p, .skills ul {
       opacity: 0;
       animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    .bio p:nth-child(1), .skills ul:nth-child(1) {
       animation-delay: 0.3s;
-    }
-
-    .bio p:nth-child(2), .skills ul:nth-child(2) {
-      animation-delay: 0.6s;
     }
 
     @keyframes fadeIn {
@@ -237,68 +242,146 @@
     <div class="top-right-text">ABOUT ME</div>
   </div>
 
-  <div class="dropdown-container">
-    <button class="dropdown-button">☰</button>
-    <div class="dropdown-content">
-      <div class="radio-container">
-        <input type="radio" id="option1" name="dropdown" />
-        <label for="option1"><a href="home.html">🏠︎ Home</a></label>
-        <input type="radio" id="option2" name="dropdown" />
-        <label for="option2"><a href="about.html">✎ About</a></label>
-        <input type="radio" id="option3" name="dropdown" />
-        <label for="option3"><a href="projects.html">🗒 Project</a></label>
-        <input type="radio" id="option4" name="dropdown" />
-        <label for="option4"><a href="contact.html">☏ Contact</a></label>
-      </div>
-    </div>
-  </div>
+  <script src="nav.js"></script>
 
   <div class="container">
+
+	  <div class="sections">
+		  <div class="resume-image">
+			  <h3>Resume</h3>
+			  <img src="resume.png" alt="Resume">
+      </div>
+		  <div class="cv-image">
+			  <h3>Curriculum Vitae</h3>
+			  <img src="cv.png" alt="CV">
+      </div>
+	  </div>
+
+	  <div class="downloads">
+		  <a href="Resume.pdf" class="button" download="">
+			  <span class="button_lg">
+				  <span class="button_sl"></span>
+				  <span class="button_text">Download Resume</span>
+			  </span>
+		  </a>
+		  <a href="CV.pdf" class="button" download="">
+			  <span class="button_lg">
+				  <span class="button_sl"></span>
+				  <span class="button_text">Download CV</span>
+			  </span>
+		  </a>
+	  </div>
+	  
     <div class="bio">
       <h3>Biography</h3>
       <p>
-        Hi, I'm Abheer Shambharkar, a passionate web designer, developer, and a future game designer with Bachelor of Technology degree in Computer Science and Engineering. I specialize in creating engaging digital experiences, whether it's designing sleek, user-friendly websites or developing immersive games. With a strong foundation in both front-end and back-end development, I enjoy crafting responsive and interactive web applications. At the same time, my love for gaming drives me to explore game design and development, where I bring creative ideas to life using the latest tools and technologies. I'm always eager to learn and push the boundaries of my skills, constantly improving my craft. Whether I'm coding, designing, or brainstorming new ideas, I strive to build projects that not only function seamlessly but also captivate users. Currently, I am pursuing my Master of Science Degree in Computer Games in Queen Mary University of London which is expected to be completed in September 2026.
-      </p>
+		  I'm Abheer Shambharkar — Aevious or Ari, in the virtual world. I'm a Game Designer & Programmer currently completing my MSc in Computer Games at Queen Mary University of London, backed by a B.Tech in Computer Science & Engineering and a background in software engineering and web development. That background wasn't wasted, it's why I approach game development from both a creative and an engineering angle, treating design decisions and system architecture as the same problem.
+		  My second semester introduced me to AI agent behaviour and procedural content generation and that shifted everything. My current focus sits between AI programming and technical game design, building intelligent systems and the structures that let designers push against them, with gameplay programming and narrative/systems design filling out the rest.
+		  That focus got tested during my internship at Elyndor Interactive, where I joined as a programming intern on their unreleased horror title, Kaali: A Mother's Tale, and ended up leading enemy AI development and restructuring the team's workflow. It's also the throughline of Yassantra, my third-person horror project built to showcase a custom enemy AI system.
+		  Both projects feed into the Game Alphabet Development series. I believe games are the strongest storytelling medium there is, because players experience the world instead of watching it. That's the work I want to keep making.  The journey's still ongoing.
+	  </p>
+	  <p>
+		  Alongside my coursework, I run a long-time personal challenge called Game Alphabet Development(GAD) series — a series of 26 games, one for every letter of the alphabet, built out of order and driven by whatever skill, genre or technology I want to wrestle with next. Four entries in so far: AirVOID (arcade fundamentals), Galaxy Shooter (gameplay systems), FeatherBound (large-scale survival) and Yassantra (AI-driven horror). Less about finishing the list, more about staying uncomfortable on purpose and learn new new exciting stuff.
+	  </p>
     </div>
+
+	  <div class="bio">
+		  <h3>Where I Focus</h3>
+		  <p>
+			  I split my focus evenly across two tracks: programming and design.
+		  </p>
+		  <p>
+			  Programming — from strongest interest to next: AI Programmer, Gameplay Systems Programmer, Gameplay Programmer.
+		  </p>
+		  <p>
+			  Design — from strongest interest to next: Technical Game Designer, AI Designer, Gameplay Designer, Systems Designer, Narrative Designer, Lore Designer.
+		  </p>
+	  </div>
 
     <div class="skills">
       <h3>Technical Skills</h3>
+      <h4>Game Development</h4>
       <ul>
-        <li>Web Development (HTML, CSS, JavaScript, PHP)</li>
-        <li>Game Design and Development (Unity, Blender)</li>
-        <li>Database Management (MySQL, SQL Server)</li>
-        <li>Tools (Canva, Figma, GitHub, PicsArt)</li>
-        <li>Programming Languages (C, C++, C#, Java, Python, JavaScript, PHP)</li>
+        <li>Unity Engine (C#)</li>
+        <li>Game Design & Mechanics</li>
+        <li>AI Agent Behaviour</li>
+        <li>Procedural Content Generation</li>
+      </ul>
+      <h4>Programming Languages</h4>
+      <ul>
+        <li>C, C++, C#, Java, Python, JavaScript, PHP, SQL</li>
+      </ul>
+      <h4>Web Development</h4>
+      <ul>
+        <li>HTML5, CSS, Bootstrap 5</li>
+        <li>XAMPP (Local Backend Development)</li>
+      </ul>
+      <h4>Tools</h4>
+      <ul>
+        <li>Version Control: GitHub</li>
+        <li>Graphic Design: Canva, Figma, PicsArt</li>
+      </ul>
+      <h4>Office Suite</h4>
+      <ul>
+        <li>Word, PowerPoint, Excel, Outlook, To Do</li>
       </ul>
     </div>
 
-    <div class="sections">
-      <div class="resume-image">
-        <h3>Resume</h3>
-        <img src="resume.jpg" alt="Resume">
-      </div>
-      <div class="cv-image">
-        <h3>Curriculum Vitae</h3>
-        <img src="cv.jpg" alt="CV">
-      </div>
+    <div class="skills">
+      <h3>Soft Skills</h3>
+      <ul>
+        <li>Communication & Public Speaking</li>
+        <li>Leadership & Team Coordination</li>
+        <li>Critical Thinking & Problem Solving</li>
+        <li>Adaptability & Open-mindedness</li>
+        <li>Time Management & Organisation</li>
+        <li>Attention to Detail</li>
+        <li>Independent & Team Working</li>
+        <li>Professional & Positive Attitude</li>
+      </ul>
     </div>
 
-    <div class="downloads">
-      <a href="Resume.pdf" class="button" download>
-        <span class="button_lg">
-          <span class="button_sl"></span>
-          <span class="button_text">Download Resume</span>
-        </span>
-      </a>
-      <a href="CV.pdf" class="button" download>
-        <span class="button_lg">
-          <span class="button_sl"></span>
-          <span class="button_text">Download CV</span>
-        </span>
-      </a>
+    <div class="skills">
+      <h3>Other Skills</h3>
+      <ul>
+        <li>Karate Practitioner (3rd Kyu)</li>
+        <li>Swimmer (10+ years experience)</li>
+        <li>Badminton Player (2+ years)</li>
+      </ul>
+    </div>
+
+    <div class="skills">
+      <h3>Interests</h3>
+      <ul>
+        <li>Animation & 3D Art</li>
+        <li>Writing</li>
+        <li>Astronomy & Cosmos</li>
+        <li>Philosophy & Human Psychology</li>
+        <li>Languages</li>
+        <li>Intellectual Exploration</li>
+      </ul>
+    </div>
+
+    <div class="skills">
+      <h3>Hobbies</h3>
+      <ul>
+        <li>Researching & Brainstorming</li>
+        <li>Video Games</li>
+        <li>Anime & Movies</li>
+        <li>Web Series</li>
+      </ul>
+    </div>
+
+    <div class="skills">
+      <h3>Education</h3>
+      <ul>
+        <li>MSc in Computer Games — Queen Mary University of London (Sept 2025 – Sept 2026)</li>
+        <li>B.Tech in Computer Science and Engineering — Rashtrasant Tukadoji Maharaj Nagpur University (July 2020 – Dec 2024)</li>
+        <li>Higher Secondary Education (IT) — St. Paul Junior College (Apr 2018 – Apr 2020)</li>
+      </ul>
     </div>
   </div>
 
-  <footer class="footer">©2025, Aevious. All rights reserved.</footer>
+  <footer class="footer">©2026, Aevious. All rights reserved.</footer>
 </body>
 </html>

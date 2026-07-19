@@ -36,10 +36,28 @@
             align-items: center;
             padding: 20px;
             height: 50%;
-            background-image: url('block.gif');
+            position: relative;
+            background-image: url('bot.gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+        }
+
+        .top-half::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .top-half .left-side,
+        .top-half .right-side {
+            position: relative;
+            z-index: 2;
         }
 
         .left-side {
@@ -115,6 +133,7 @@
         .bottom-half {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 20px;
             height: 50%;
             position: relative;
@@ -162,9 +181,14 @@
             line-height: 1.6;
             color: #f0c808;
             text-shadow: 0 0 5px rgba(240, 200, 8, 0.5);
-            text-align: center;
+            text-align: justify;
             margin: 0 auto;
             max-width: 80%;
+        }
+
+        .left-side .buttons {
+            min-height: 68px;
+            margin-top: 10px;
         }
 
         .footer {
@@ -181,28 +205,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="dropdown-container">
-            <button class="dropdown-button">☰</button>
-            <div class="dropdown-content">
-                <div class="radio-container">
-                    <input type="radio" id="option1" name="dropdown" />
-                    <label for="option1"><a href="home.html">🏠︎ Home</a></label>
-
-                    <input type="radio" id="option2" name="dropdown" />
-                    <label for="option2"><a href="about.html">✎ About</a></label>
-
-                    <input type="radio" id="option3" name="dropdown" />
-                    <label for="option3"><a href="projects.html">🗒 Project</a></label>
-
-                    <input type="radio" id="option4" name="dropdown" />
-                    <label for="option4"><a href="contact.html">☏ Contact</a></label>
-                </div>
-            </div>
-        </div>
+        <script src="nav.js"></script>
 
         <div class="top-half">
             <div class="left-side">
-                <div>Abheer Shambharkar AKA</div>
+                <div>Abheer Shambharkar</div>
                 <div onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                     Aevious
                 </div>
@@ -214,14 +221,6 @@
                             <span class="bg"><span class="bg-inner"></span></span>
                             <span class="bg-right"><span class="bg-inner"></span></span>
                             <span class="text">Writings</span>
-                        </button>
-                    </div>
-                    <div>
-                        <button class="btn cube" onclick="window.location.href='personalpage.html'">
-                            <span class="bg-top"><span class="bg-inner"></span></span>
-                            <span class="bg"><span class="bg-inner"></span></span>
-                            <span class="bg-right"><span class="bg-inner"></span></span>
-                            <span class="text">Personal Page</span>
                         </button>
                     </div>
                 </div>
@@ -236,18 +235,18 @@
         </div>
 
         <div class="border-div">
-            Web designer & Developer * Game Designer & Developer * Graphic Designer
+            Game Designer and Programmer
         </div>
 
         <div class="bottom-half">
             <div class="section">
                 <h2>Welcome to My Portfolio</h2>
-                <p style="text-align: justify;">
-                    I'm currently pursuing my Masters of Science Degree in 'Computer Games' in Queen Mary University of London, United Kingdom. I have a solid background in web design and development and am a dynamic and flexible graduate of software engineering. I'm passionate about creating user-friendly and successful digital experiences, and I work well in both solo and group settings, guaranteeing excellent outcomes via efficient problem-solving and teamwork. Motivated by my passion for lifelong learning, I'm dedicated to delve into the fascinating realm of game creation, which includes 3D modeling and animation. In addition to my technical expertise, I have a creative side as a budding novelist who likes to use stories to convey original viewpoints and thoughts. I have a strong appreciation for languages in addition to writing and technology. I think that communication has the ability to unite disparate cultures, promote understanding, and establish deep connections. 
+                <p>
+                    Greetings, fellow gamers and developers, I'm Abheer (Aevious). I'm a Game Designer & Programmer, currently pursuing my Master's in Computer Games at Queen Mary University of London. I loved playing video game since I was a child. Hence, I decided my career to be that of creation of such games. I work across game design, gameplay programming and intelligent systems, with a background in software engineering. This site's a running log of what I've built, what I'm working on next, my interests and some other stuff so feel free to look around and feel free to contact me. PS : Don't mind my picture, I'm not photogenic.
                 </p>
             </div>
         </div>
     </div>
-    <footer class="footer">©2025, Aevious. All rights reserved.</footer>
+    <footer class="footer">©2026, Aevious. All rights reserved.</footer>
 </body>
 </html>

@@ -105,6 +105,7 @@
 
 .buttons div {
   display: inline-block; /* Ensure buttons align horizontally */
+  vertical-align: top; /* Prevent baseline shift when button count changes */
   margin-right: 10px; /* Add spacing between buttons */
 }
 

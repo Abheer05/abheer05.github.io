@@ -82,7 +82,9 @@
     }
 
     .container {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       height: 100vh;
     }
 
@@ -135,11 +137,15 @@
     }
 
     .column:nth-child(2)::before {
-      background-image: url('githubbg.jpg');
+      background-image: url('linkedinbg.jpg');
     }
 
     .column:nth-child(3)::before {
-      background-image: url('linkedinbg.jpg');
+      background-image: url('githubbg.jpg');
+    }
+
+    .column:nth-child(4)::before {
+      background-image: url('itchiobg.jpg');
     }
 
     .column::after {
@@ -187,24 +193,7 @@
     <div class="top-right-text">CONTACT ME</div>
   </div>
 
-  <div class="dropdown-container">
-      <button class="dropdown-button">☰</button>
-      <div class="dropdown-content">
-    <div class="radio-container">
-      <input type="radio" id="option1" name="dropdown" />
-      <label for="option1" style="text-align: left;"><a href="home.html">🏠︎ Home</a></label>
-
-      <input type="radio" id="option2" name="dropdown" />
-      <label for="option2" style="text-align: left;"><a href="about.html">✎ About</a></label>
-
-      <input type="radio" id="option3" name="dropdown" />
-      <label for="option3" style="text-align: left;"><a href="projects.html">🗒 Project</a></label>
-
-      <input type="radio" id="option4" name="dropdown" />
-      <label for="option4" style="text-align: left;"><a href="contact.html">☏ Contact</a></label>
-    </div>
-  </div>
-  </div>
+  <script src="nav.js"></script>
 
   <div class="container">
       <div class="column">
@@ -214,19 +203,25 @@
         </a>
       </div>
       <div class="column">
+        <div>Abheer Shambharkar</div>
+        <a href="https://www.linkedin.com/in/abheer-shambharkar-5444b9227/" target="_blank" class="icon">
+          <img src="linkedin.gif" alt="LinkedIn">
+        </a>
+      </div>
+      <div class="column">
         <div>#Abheer05</div>
         <a href="https://github.com/Abheer05" target="_blank" class="icon">
           <img src="github.gif" alt="Github">
         </a>
       </div>
       <div class="column">
-        <div>Abheer Shambharkar</div>
-        <a href="https://www.linkedin.com/in/abheer-shambharkar-5444b9227/" target="_blank" class="icon">
-          <img src="linkedin.gif" alt="LinkedIn">
+        <div>aevious</div>
+        <a href="https://aevious.itch.io/" target="_blank" class="icon">
+          <img src="itchio.gif" alt="itch.io">
         </a>
       </div>
   </div>
 
-  <footer class="footer">©2025, Aevious. All rights reserved.</footer>
+  <footer class="footer">©2026, Aevious. All rights reserved.</footer>
 </body>
 </html>
